@@ -26,7 +26,7 @@ app.use(cors);
 
 app.use(cookieParser()); // подключаем парсер кук
 
-app.use("/api", require("./routes/index"));
+app.use("/", require("./routes/index"));
 
 app.use(errorLogger); // подключаем логгер ошибок
 
