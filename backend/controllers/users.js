@@ -65,7 +65,7 @@ module.exports.login = (req, res, next) => {
         httpOnly: true,
         maxAge: 3600000 * 24 * 7,
         sameSite: true
-      }).send({ data: user });
+      }).send(user.toJSON());
     })
     .catch(next);
 };
