@@ -13,7 +13,7 @@ const { HTTP_STATUS_CREATED } = http2.constants;
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.send({ data: users }))
+    .then((users) => res.send(users))
     .catch(next);
 };
 
@@ -21,7 +21,7 @@ module.exports.getUser = (req, res, next) => {
   User.findById(req.params.userId)
     .then((user) => {
       if (user !== null) {
-        return res.send({ data: user });
+        return res.send(user);
       }
       throw new NotFoundError("Запрашиваемый пользователь не найден");
     })
@@ -30,7 +30,7 @@ module.exports.getUser = (req, res, next) => {
 
 module.exports.getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch(next);
 };
 
@@ -44,7 +44,7 @@ module.exports.createUser = (req, res, next) => {
       name, about, avatar, email, password: hash // записываем хеш в базу
     }))
     .then((user) => User.findById(user._id))
-    .then((user) => res.status(HTTP_STATUS_CREATED).send({ data: user }))
+    .then((user) => res.status(HTTP_STATUS_CREATED).send(user))
     .catch((err) => {
       if (err.code === 11000) {
         next(new ConflictError("Пользователь с таким email уже существует"));
@@ -72,7 +72,7 @@ module.exports.login = (req, res, next) => {
 
 function updateProfile(req, res, bodyItems, next) {
   User.findByIdAndUpdate(req.user._id, bodyItems, { new: true, runValidators: true })
-    .then((user) => res.send({ data: user }))
+    .then((user) => res.send(user))
     .catch(next);
 }
 
