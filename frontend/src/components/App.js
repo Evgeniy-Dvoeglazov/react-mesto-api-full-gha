@@ -81,6 +81,7 @@ function App() {
 
   function tokenCheck() {
     const jwt = localStorage.getItem('jwt');
+    console.log(jwt);
     if (jwt) {
       setIsLoading(true);
       auth.getContent(jwt)

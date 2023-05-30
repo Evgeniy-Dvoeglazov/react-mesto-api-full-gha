@@ -1,7 +1,8 @@
 const allowedCors = [
   "http://mesto.dvoeglazov.nomoredomains.rocks",
   "https://mesto.dvoeglazov.nomoredomains.rocks",
-  "localhost:3000"
+  "https://localhost:3000",
+  "http://localhost:3000"
 ];
 
 module.exports = (req, res, next) => {
@@ -16,6 +17,7 @@ module.exports = (req, res, next) => {
   if (allowedCors.includes(origin)) {
     // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
     res.header("Access-Control-Allow-Origin", origin);
+    res.header("Access-Control-Allow-Credentials", true);
   }
 
   // Если это предварительный запрос, добавляем нужные заголовки

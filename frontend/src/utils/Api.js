@@ -27,7 +27,6 @@ class Api {
   // Получаем массив карточек с сервера
 
   getCardList() {
-    console.log(this._headers);
     return fetch(`${this._url}/cards`, {
       headers: this._headers
     })
