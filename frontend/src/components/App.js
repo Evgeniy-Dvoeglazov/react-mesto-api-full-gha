@@ -80,7 +80,7 @@ function App() {
   }, []);
 
   function tokenCheck() {
-    const jwt = localStorage.getItem('jwt');
+    const jwt = localStorage.getItem('userId');
     console.log(jwt);
     if (jwt) {
       setIsLoading(true);
@@ -222,7 +222,7 @@ function App() {
   }
 
   function handleLogout(state) {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('userId');
     navigate('/sign-in', { replace: true });
     setLoggedIn(state);
     setHeaderEmail('');

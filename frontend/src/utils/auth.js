@@ -22,8 +22,8 @@ export const authorize = (password, email) => {
   })
     .then((res) => getResponse(res))
     .then((data) => {
-      if (data.token) {
-        localStorage.setItem('jwt', data.token);
+      if (data) {
+        localStorage.setItem('userId', data._id);
         return data;
       }
     });
@@ -34,6 +34,7 @@ export const getContent = (token) => {
   console.log(token);
   return fetch(`${BASE_URL}/users/me`, {
     method: 'GET',
+    credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
       // 'Authorization': `Bearer ${token}`
