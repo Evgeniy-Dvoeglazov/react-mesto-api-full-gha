@@ -55,7 +55,6 @@ function App() {
     if (loggedIn) {
       api.getUserInfo()
         .then((res) => {
-          console.log(res);
           setCurrentUser(res);
         })
         .catch((err) => {
@@ -82,7 +81,6 @@ function App() {
 
   function tokenCheck() {
     const jwt = localStorage.getItem('userId');
-    console.log(jwt);
     if (jwt) {
       setIsLoading(true);
       auth.getContent(jwt)
@@ -146,7 +144,6 @@ function App() {
 
     api.changeLikeCardStatus(card._id, !isLiked)
       .then((newCard) => {
-        console.log(newCard);
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
       })
       .catch((err) => {

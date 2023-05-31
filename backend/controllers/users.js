@@ -8,6 +8,7 @@ const NotFoundError = require("../errors/not-found-error");
 const ConflictError = require("../errors/conflict-error");
 
 const { NODE_ENV, JWT_SECRET } = process.env;
+console.log(JWT_SECRET);
 
 const { HTTP_STATUS_CREATED } = http2.constants;
 
@@ -65,7 +66,7 @@ module.exports.login = (req, res, next) => {
         httpOnly: true,
         maxAge: 3600000 * 24 * 7,
         sameSite: true
-      }).send(user.toJSON());
+      }).send(user);
     })
     .catch(next);
 };
