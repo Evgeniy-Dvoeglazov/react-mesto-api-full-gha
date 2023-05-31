@@ -67,7 +67,7 @@ function App() {
     if (loggedIn) {
       api.getCardList()
         .then((res) => {
-          setCards(res);
+          setCards([...res].reverse());
         })
         .catch((err) => {
           console.log(err);
