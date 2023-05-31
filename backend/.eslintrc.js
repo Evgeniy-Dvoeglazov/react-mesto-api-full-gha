@@ -19,7 +19,6 @@ module.exports = {
       "error",
       "never"],
     "no-underscore-dangle": ["error", { allow: ["_id"] }],
-    "func-names": ["error", "never"],
-    "consistent-return": ["error", { treatUndefinedAsUnspecified: true }]
+    "func-names": ["error", "never"]
   }
 };

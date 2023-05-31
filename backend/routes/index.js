@@ -12,7 +12,7 @@ router.use(auth);
 router.use("/users", require("./users"));
 router.use("/cards", require("./cards"));
 
-router.all("*", () => {
+router.use(() => {
   throw new NotFoundError("Запрашиваемая информация не найдена");
 });
 

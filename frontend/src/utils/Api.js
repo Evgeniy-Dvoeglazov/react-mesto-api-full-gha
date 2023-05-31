@@ -29,7 +29,7 @@ class Api {
 
   getCardList() {
     return fetch(`${this._url}/cards`, {
-      // credentials: 'include',
+      credentials: 'include',
       headers: this._headers
     })
       .then((res) => {
@@ -99,6 +99,7 @@ class Api {
     } else
       return fetch(`${this._url}/cards/${cardId}/likes`, {
         method: 'DELETE',
+        credentials: 'include',
         headers: this._headers
       })
         .then((res) => {
