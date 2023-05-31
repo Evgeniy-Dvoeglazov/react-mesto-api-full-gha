@@ -3,7 +3,7 @@ require("dotenv").config();
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
-const YOUR_JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc3NWQyOWMwYjliYzU0ODVkZTNhOTQiLCJpYXQiOjE2ODU1NDQyMzksImV4cCI6MTY4NjE0OTAzOX0.N0TNxlbfDoDizIe4H0waNjjQ2V9zbBoyNKyEcWMKBSE"; // вставьте сюда JWT, который вернул публичный сервер
+const YOUR_JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc3NjAzZmE0YzEzYTZhZGI2NDA4MmUiLCJpYXQiOjE2ODU1NDUwMjcsImV4cCI6MTY4NjE0OTgyN30.m4JsS9xHTfRJaTJwT1cmarTYcBYKnJ9ep7Y08z9xQf8"; // вставьте сюда JWT, который вернул публичный сервер
 const SECRET_KEY_DEV = "dev-secret"; // вставьте сюда секретный ключ для разработки из кода
 try {
   const payload = jwt.verify(YOUR_JWT, SECRET_KEY_DEV);
