@@ -6,7 +6,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.107.12
+IP 158.160.107.12
 
 Frontend https://mesto.dvoeglazov.nomoredomains.rocks
 
