@@ -8,7 +8,6 @@ const NotFoundError = require("../errors/not-found-error");
 const ConflictError = require("../errors/conflict-error");
 
 const { NODE_ENV, JWT_SECRET } = process.env;
-console.log(JWT_SECRET);
 
 const { HTTP_STATUS_CREATED } = http2.constants;
 
@@ -62,6 +61,7 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       // Создаем токен
       const token = jwt.sign({ _id: user._id }, NODE_ENV === "production" ? JWT_SECRET : "dev-secret", { expiresIn: "7d" });
+      console.log(JWT_SECRET);
       res.cookie("token", token, {
         httpOnly: true,
         maxAge: 3600000 * 24 * 7,
