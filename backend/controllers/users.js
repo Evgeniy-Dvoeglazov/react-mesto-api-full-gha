@@ -1,3 +1,4 @@
+require("dotenv").config();
 const http2 = require("node:http2");
 const bcrypt = require("bcryptjs"); // Для хеширования пароля
 const jwt = require("jsonwebtoken"); // Для создания токенов
@@ -61,7 +62,6 @@ module.exports.login = (req, res, next) => {
     .then((user) => {
       // Создаем токен
       const token = jwt.sign({ _id: user._id }, NODE_ENV === "production" ? JWT_SECRET : "dev-secret", { expiresIn: "7d" });
-      console.log(JWT_SECRET);
       res.cookie("token", token, {
         httpOnly: true,
         maxAge: 3600000 * 24 * 7,
