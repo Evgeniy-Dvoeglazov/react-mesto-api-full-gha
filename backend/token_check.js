@@ -1,6 +1,9 @@
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
-const YOUR_JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc3MjUwNzFjZDkxZGU0Zjc1ZDAyOTAiLCJpYXQiOjE2ODU1MzU3NTQsImV4cCI6MTY4NjE0MDU1NH0.lBsr9-7YkHezC7nwxPgPJjcV0tfnodFfE6VDBXLCzao"; // вставьте сюда JWT, который вернул публичный сервер
+const { NODE_ENV, JWT_SECRET } = process.env;
+
+const YOUR_JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDc3NWQyOWMwYjliYzU0ODVkZTNhOTQiLCJpYXQiOjE2ODU1NDQyMzksImV4cCI6MTY4NjE0OTAzOX0.N0TNxlbfDoDizIe4H0waNjjQ2V9zbBoyNKyEcWMKBSE"; // вставьте сюда JWT, который вернул публичный сервер
 const SECRET_KEY_DEV = "dev-secret"; // вставьте сюда секретный ключ для разработки из кода
 try {
   const payload = jwt.verify(YOUR_JWT, SECRET_KEY_DEV);
@@ -9,6 +12,9 @@ try {
 Надо исправить. В продакшне используется тот же
 секретный ключ, что и в режиме разработки.
 `);
+
+  console.log(JWT_SECRET);
+  console.log(NODE_ENV);
 } catch (err) {
   if (err.name === "JsonWebTokenError" && err.message === "invalid signature") {
     console.log(
